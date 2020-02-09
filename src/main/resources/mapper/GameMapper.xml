@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mapper.IGameMapper">
+    <insert id="save"  parameterType="com.pojo.Game">
+insert into youxi(gname,sex,gtime,phone,qq,id,money) values(#{gname},#{sex},#{gtime},#{phone},#{qq},#{id},#{money})
+</insert>
+    <update id="update" parameterType="com.pojo.Game">
+update youxi set gname=#{gname},sex=#{sex},gtime=#{gtime},phone=#{phone},qq=#{qq},id=#{id},money=#{money} where gid=#{gid}
+</update>
+    <delete id="delById" parameterType="java.lang.String">
+delete from youxi where gid=#{gid}
+</delete>
+    <select id="findall" resultType="com.pojo.Game">
+select * from vw
+</select>
+    <select id="findById" parameterType="java.lang.String" resultType="com.pojo.Game">
+select * from vw where gid=#{gid}
+</select>
+    <select id="findPageAll" parameterType="java.util.Map" resultType="com.pojo.Game">
+select * from vw limit #{page},#{rows}
+
+</select>
+    <select id="findMaxrows" resultType="int">
+select count(*)from vw
+</select>
+    <select id="doinit" resultType="com.pojo.business">
+select num,platform from business
+</select>
+    <select id="doint" resultType="com.pojo.Admin">
+select * from users
+</select>
+</mapper>
